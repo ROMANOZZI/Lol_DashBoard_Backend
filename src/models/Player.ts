@@ -8,6 +8,7 @@ class Player{
     public assists:number;
     public totalDamageDealtToChampions:number;
     public killParticipation:number;
+    public totalTeamKills: number = 0; // This should be set based on the match contex
     constructor(id: string, name: string, championName: string, teamId: string, kills: number, deaths: number, assists: number, totalDamageDealtToChampions: number) {
         this.id = id;
         this.name = name;
@@ -21,8 +22,8 @@ class Player{
     }
 
     private calculateKillParticipation(): number {
-        const totalTeamKills = this.kills + this.deaths + this.assists;
-        return totalTeamKills > 0 ? (this.kills / totalTeamKills) * 100 : 0;
+
+        return this.totalTeamKills > 0 ? ((this.kills + this.assists) / this.totalTeamKills) * 100 : 0;
     }
     public toJSON(): string {
         return JSON.stringify({
