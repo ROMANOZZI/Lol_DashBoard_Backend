@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "build": "npx tsc && npx tsc-esm-fix dist && npx cpx *.json dist/",
+    "build": "npx tsc && npx tsc-esm-fix dist",
     "start": "node dist/app.js",
     "dev": "nodemon --watch 'src/**/*.ts' --exec tsx src/app.ts"
   },
